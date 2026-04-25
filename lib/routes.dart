@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:webapp/pages/about.dart';
-import 'package:webapp/pages/contact.dart';
-import 'package:webapp/pages/home.dart';
+import 'package:learningapp/pages/about.dart';
+import 'package:learningapp/pages/contact.dart';
+import 'package:learningapp/pages/home.dart';
 
 Map<String, Widget Function(BuildContext)> routes = {
   '/': (context) => HomePage(),

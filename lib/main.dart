@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:webapp/routes.dart';
+import 'package:learningapp/routes.dart';
 
 void main() {
-  runApp(WebApp());
+  runApp(LearningApp());
 }
 
-class WebApp extends StatelessWidget {
-  const WebApp({super.key});
+class LearningApp extends StatelessWidget {
+  const LearningApp({super.key});
 
   @override
   Widget build(BuildContext context) {
