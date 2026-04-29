@@ -1,18 +1,45 @@
 import 'package:flutter/material.dart';
-import 'package:learningapp/components/users_list.dart';
+import 'package:learningapp/pages/home/calls.dart';
+import 'package:learningapp/pages/home/communities.dart';
+import 'package:learningapp/pages/home/updates.dart';
+import 'package:learningapp/pages/home/users.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text('Home Page')),
-      body: Center(
-        child: Column(
+    return DefaultTabController(
+      length: 4,
+      child: Scaffold(
+        appBar: AppBar(
+          title: Text(
+            'LarnrApp',
+            style: TextStyle(
+              color: const Color.fromARGB(255, 92, 3, 201),
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          actions: [
+            IconButton(onPressed: () {}, icon: Icon(Icons.payment_outlined)),
+            IconButton(onPressed: () {}, icon: Icon(Icons.camera_alt_outlined)),
+            IconButton(onPressed: () {}, icon: Icon(Icons.more_vert_rounded)),
+          ],
+        ),
+        body: TabBarView(
           children: [
-            Text('All Users List', style: TextStyle(fontSize: 20)),
-            Expanded(child: UsersList()),
+            UserListPage(),
+            UpdatesPage(),
+            CommunitiesPage(),
+            CallsPage(),
+          ],
+        ),
+        bottomNavigationBar: TabBar(
+          tabs: [
+            Tab(text: 'Chats', icon: Icon(Icons.chat)),
+            Tab(text: 'Updates', icon: Icon(Icons.chat_sharp)),
+            Tab(text: 'Communities', icon: Icon(Icons.groups)),
+            Tab(text: 'Calls', icon: Icon(Icons.call)),
           ],
         ),
       ),

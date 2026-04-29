@@ -82,7 +82,7 @@ class _UsersListState extends State<UsersList> {
               users[index].username,
               style: TextStyle(fontWeight: FontWeight.w300),
             ),
-            SizedBox(width: 10),
+            Spacer(),
             Text(
               users[index].role,
               style: TextStyle(
