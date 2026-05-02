@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:learningapp/pages/home/calls.dart';
-import 'package:learningapp/pages/home/communities.dart';
-import 'package:learningapp/pages/home/updates.dart';
-import 'package:learningapp/pages/home/users.dart';
+import 'package:learningapp/pages/home/parts/calls.dart';
+import 'package:learningapp/pages/home/parts/communities.dart';
+import 'package:learningapp/pages/home/parts/updates.dart';
+import 'package:learningapp/pages/home/parts/users.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -28,10 +28,10 @@ class HomePage extends StatelessWidget {
         ),
         body: TabBarView(
           children: [
-            UserListPage(),
-            UpdatesPage(),
-            CommunitiesPage(),
-            CallsPage(),
+            UserListPart(),
+            UpdatesPart(),
+            CommunitiesPart(),
+            CallsPart(),
           ],
         ),
         bottomNavigationBar: TabBar(

@@ -1,8 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:learningapp/models/user_model.dart';
 import 'package:learningapp/routes.dart';
+import 'package:provider/provider.dart';
 
 void main() {
-  runApp(LearningApp());
+  runApp(
+    MultiProvider(
+      providers: [ChangeNotifierProvider(create: (context) => UserModel())],
+      child: const LearningApp(),
+    ),
+  );
 }
 
 class LearningApp extends StatelessWidget {

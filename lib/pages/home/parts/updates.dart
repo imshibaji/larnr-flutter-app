@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class UpdatesPage extends StatelessWidget {
-  const UpdatesPage({super.key});
+class UpdatesPart extends StatelessWidget {
+  const UpdatesPart({super.key});
 
   @override
   Widget build(BuildContext context) {
