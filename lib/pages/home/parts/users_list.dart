@@ -53,6 +53,7 @@ class UsersList extends StatelessWidget {
                 context,
                 '/user',
                 arguments: {
+                  'id': users[index].id,
                   'name': users[index].name,
                   'description': users[index].description,
                   'username': users[index].username,

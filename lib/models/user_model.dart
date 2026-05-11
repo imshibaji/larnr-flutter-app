@@ -56,7 +56,7 @@ class UserModel extends ChangeNotifier {
           name: response.data[index]['name'] ?? '',
           description: response.data[index]['description'] ?? '',
           username: response.data[index]['slug'] ?? '',
-          website: response.data[index]['website'] ?? '',
+          website: response.data[index]['url'] ?? '',
           avatar:
               response.data[index]['avatar_urls']['96'] ??
               'https://img.freepik.com/free-photo/portrait-white-man-isolated_53876-40306.jpg?semt=ais_rp_progressive&w=740&q=80',
