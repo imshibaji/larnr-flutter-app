@@ -8,12 +8,32 @@ import 'package:learningapp/classes/user.dart';
 
 class CourseModel extends ChangeNotifier {
   List<Course> _courses = [];
+  List<Course> _filteredCourses = [];
 
   CourseModel() {
     loadCourses();
   }
 
-  UnmodifiableListView<Course> get courses => UnmodifiableListView(_courses);
+  UnmodifiableListView<Course> get courses =>
+      UnmodifiableListView(_filteredCourses);
+
+  void search(String query) {
+    if (query.isEmpty) _filteredCourses = _courses;
+    _filteredCourses = _courses
+        .where(
+          (course) =>
+              course.title.toLowerCase().contains(query.toLowerCase()) ||
+              course.slug.toLowerCase().contains(query.toLowerCase()),
+        )
+        .toList();
+    notifyListeners();
+  }
+
+  void filter(String mode) {
+    if (mode.isEmpty) _filteredCourses = _courses;
+    _filteredCourses = _courses.where((course) => course.mode == mode).toList();
+    notifyListeners();
+  }
 
   void loadCourses() async {
     final dio = Dio();
@@ -33,10 +53,10 @@ class CourseModel extends ChangeNotifier {
             response.data[index]['excerpt']['rendered'],
           ).body!.text.trim(),
           content: response.data[index]['content']['rendered'] ?? '',
-          image:
-              response
-                  .data[index]['_embedded']['wp:featuredmedia'][0]['source_url'] ??
-              '',
+          image: response.data[index]['featured_media'] != 0
+              ? response
+                    .data[index]['_embedded']['wp:featuredmedia'][0]['source_url']
+              : 'https://placehold.co/600x400.png?text=No%20Image',
           duration: response.data[index]['duration'] ?? '',
           mode: response.data[index]['mode'] ?? '',
           batchSize: response.data[index]['batch_size'] ?? '',
@@ -63,6 +83,7 @@ class CourseModel extends ChangeNotifier {
           ),
         ),
       );
+      _filteredCourses = _courses;
       notifyListeners();
     } catch (e) {
       print(e);
